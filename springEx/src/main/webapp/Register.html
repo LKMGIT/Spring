@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <script type="text/javascript">
+        function fn_submit(){
+            let Register = document.Register;
+            const user_name = Register.user_name.value.trim();
+            const user_age  = Register.user_age.value.trim();
+            const user_id   = Register.user_id.value.trim();
+            const user_pw   = Register.user_pw.value.trim();
+            const user_addr = Register.user_addr.value.trim();
+
+            if(user_id.length === 0 || user_pw.length === 0){
+                alert("아이디와 비밀번호가 비어있습니다.")
+            }else{
+                Register.method="post";
+                Register.action="register";
+                Register.submit();
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+  <form name="Register">
+
+    이름: <input type="text" name="user_name"><br>
+    나이: <input type="text" name="user_age"><br>
+    아이디: <input type="text" name="user_id"><br>
+    비밀번호: <input type="password" name="user_pw"><br>
+    주소: <input type="text" name="user_addr"><br>
+    <input type="button" onclick="fn_submit()" value="회원가입">
+
+  </form>
+
+</body>
+</html>
