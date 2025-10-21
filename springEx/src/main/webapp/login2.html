@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script type="text/javascript">
+        function fn_validate(){
+            let frmLogin = document.frmLogin; // frmLogin의 객체 값을 가져오겠다
+            let user_id = document.user_id.value;
+            let user_pw = document.user_pw.value;
+
+            if(user_id.length === 0 || user_pw.length === 0){
+                alert("아이디와 비밀번호가 비어있습니다.")
+            }else{
+                frmLogin.method="post";
+                frmLogin.action="login3";
+                frmLogin.submit();
+            }
+
+
+        }
+
+
+    </script>
+</head>
+<body>
+<form name = "frmLogin" >
+    아이디: <input type="text" name ="user_id"><br>
+    비밀번호: <input type="password" name ="user_pw"><br>
+    <input type="button" onclick="fn_validate()" value="로그인"> &nbsp&nbsp<input type="reset" value="취소">
+    <input type="hidden" name="user_address" value="서울시 강남구"/>
+</form>
+
+</body>
+</html>
