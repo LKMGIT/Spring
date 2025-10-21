@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script type="text/javascript">
+        function fn_cal(){
+            const frmCal = document.frmCal;
+
+            let String = document.cal.value.trim();
+
+            let num1 = Number(String[1]);
+            let op = String[2];
+            let num2 = Number(String[3]);
+
+            let result = 0;
+            switch (op) {
+                case '+': result = num1 + num2; break;
+                case '-': result = num1 - num2; break;
+                case '*': result = num1 * num2; break;
+                case '/':
+                    if (num2 === 0) { alert("0으로 나눌 수 없습니다."); return; }
+                    result = num1 / num2; break;
+                default:
+                    alert("지원하지 않는 연산자입니다."); return;
+            }
+
+            frmCal.num1.value = String(num1);
+            frmCal.num2.value = String(num2);
+            frmCal.result.value = String(result);
+
+            frmCal.method = "get";
+            frmCal.action = "calc";
+            frmCal.submit();
+
+        }
+
+    </script>
+</head>
+<body>
+    <form name = "frmCal">
+        <input type="text" name="cal" placeholder="예: 12+3">
+        <input type="hidden" name="num1">
+        <input type="hidden" name="num2">
+        <input type="hidden" name="result">
+        <input type="button" onclick="fn_cal()" value="계산">
+
+    </form>
+</body>
+</html>
