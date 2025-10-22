@@ -1,0 +1,62 @@
+1. (OX) 서블릿 수명주기 기본 순서는 `init()` → `service()` → `destroy()` 이다.
+    init -> 서블릿 동작 시 한 번만 호출
+    service() -> get, post 같은 동작 호출ㄹ
+    destroy() -> 종료시 호출
+
+2. `doGet`과 `doPost`의 올바른 설명은?
+
+    A) `doGet`은 보안에 강하므로 비밀번호 전송에 권장된다 (X) ? 뒤에 값이 나와 있어서 보안에 약함
+
+    B) `doPost`는 본문(body)에 데이터를 담아 보낼 수 있다  (O)
+
+    C) `doGet`은 본문을 반드시 사용해야 한다
+
+    D) 둘 다 브라우저가 자동 캐시를 막는다 (X)
+
+3. 한글 응답 본문이 깨질 때 **반드시** 설정해야 하는 응답 헤더(또는 API)는?
+        resp.setContentType("text/html;charset=UTF-8");
+
+4. 다음 중 **상태 코드**와 의미가 맞는 것은?
+
+    A) 200 - Redirect 완료 (X) 200번 대는 OK라는 뜻
+
+    B) 302 - 임시 리다이렉트 (O)
+
+    C) 404 - 서버 내부 오류 (X) 서버 내부 오류가 아닌 NotFound
+
+    D) 500 - 리소스를 찾을 수 없음
+
+5. 쿼리 파라미터를 읽는 메서드는?
+
+    A) `getAttribute`  B) `getParameter`  C) `getHeader`  D) `getCookie`
+        (B)
+
+6. WAS 란 무엇이고 상용화 프로그램 종류2가지
+    Web Application Server: 서블릿/JSP 실행, 스레드/세션/라이프사이클 관리, 보안·트랜잭션·자원풀링 등 제공.
+
+                            상용 제품 예: Oracle WebLogic, IBM WebSphere, TOmcat
+
+7. 응답객체에 클라이언트에 전송할 데이터를 쓸 때 사용되는 클래스와 메서드는 무엇인가?''
+PrintWriter out = resp.getWriter();
+out.println("...");  // 문자응답
+
+
+
+8. 클라이언트가 서버에 접속했을때 WAS 부여해 주는 2가지 객체는 ?
+
+HttpServletRequest, HttpServletResponse
+9. 서블릿을 WAS 등록할때 사용되는 어노테이션은 무엇이고,  해당 서블릿의 이름이  myServlet 이고  my란 요청명으로  등록 방법은?
+
+서블릿 등록 어노테이션 + 예시
+어노테이션: @WebServlet
+이름이 myServlet, 요청 경로가 /my인 등록:
+
+@WebServlet(name = "myServlet", urlPatterns = {"/my"})
+public class MyServlet extends HttpServlet { ... }
+
+
+10. 클라이언트가 서버에 요청시 해당 요청을 처리하는 서블릿을 연결해주는 배치관리자 역할의 파일명은 무엇이고  프로젝트에서의 위치(디렉토리명)는 어디인가?
+
+일명: web.xml
+
+src/main/webapp/WEB-INF/web.xml)

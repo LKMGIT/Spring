@@ -21,15 +21,18 @@ public class CalServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
 
-        String p1 = req.getParameter("num1");
-        String p2 = req.getParameter("num2");
-        String pr = req.getParameter("result");
+        String s1 = req.getParameter("num1");
+        String s2 = req.getParameter("num2");
+        String op = req.getParameter("op");
+        String clientResult = req.getParameter("result"); // 참고용(신뢰 X)
+
 
         try (PrintWriter out = resp.getWriter()) {
             out.println("<!doctype html><html><body>");
-            out.printf("<p>num1 = %s</p>%n", p1);
-            out.printf("<p>num2 = %s</p>%n", p2);
-            out.printf("<p>result = %s</p>%n", pr);
+            out.printf("<p>num1 = %s</p>%n", s1);
+            out.printf("<p>op = %s</p>%n", op);
+            out.printf("<p>num2 = %s</p>%n", s2);
+            out.printf("<p>result = %s</p>%n", clientResult);
             out.println("</body></html>");
         }
 
