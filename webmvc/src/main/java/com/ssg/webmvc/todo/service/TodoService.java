@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 
 import java.io.InputStream;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -36,29 +37,43 @@ public enum TodoService {
 
     }
 
-    //10개의 TodoDTO 객체를 만들어 반환
-    public List<TodoDTO> getList() {
-        List<TodoDTO> todoDTOS = IntStream.range(0, 10).mapToObj(
-                i -> {
-                    TodoDTO dto = new TodoDTO();
-                    dto.setTno((long) i);
-                    dto.setTitle("Todo..title" + i);
-                    dto.setDueDate(LocalDate.now());
-                    return dto;
-                }
-        ).collect(Collectors.toList());
-        return todoDTOS;
+
+    public List<TodoDTO> ListAll() throws Exception {
+        List<TodoVO> todoVOS = new ArrayList<>();
+        todoVOS = dao.selectAll();
+
+        List<TodoDTO> todoList = todoVOS.stream().map(
+                vo -> modelMapper.map(vo, TodoDTO.class)).collect(Collectors.toList());
+
+        return todoList;
+
     }
 
-    //1개 리턴
-    public TodoDTO get(Long tno) {
-        TodoDTO dto = new TodoDTO();
-        dto.setTno(tno);
-        dto.setTitle("Sample Todo");
-        dto.setDueDate(LocalDate.now());
-        dto.setFinished(true);
-        return dto;
-    }
+//    //10개의 TodoDTO 객체를 만들어 반환
+//    public List<TodoDTO> getList() {
+////        List<TodoDTO> todoDTOS = IntStream.range(0, 10).mapToObj(
+////                i -> {
+////                    TodoDTO dto = new TodoDTO();
+////                    dto.setTno((long) i);
+////                    dto.setTitle("Todo..title" + i);
+////                    dto.setDueDate(LocalDate.now());
+////                    return dto;
+////                }
+////        ).collect(Collectors.toList());
+////        return todoDTOS;
+//
+//
+//    }
+//
+//    //1개 리턴
+//    public TodoDTO get(Long tno) {
+//        TodoDTO dto = new TodoDTO();
+//        dto.setTno(tno);
+//        dto.setTitle("Sample Todo");
+//        dto.setDueDate(LocalDate.now());
+//        dto.setFinished(true);
+//        return dto;
+//    }
 
 }
 

@@ -14,14 +14,14 @@ import java.io.IOException;
 public class TodoReadController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("/todo/read doGet()");
-
-        // /todo/read?tno=123
-        Long tno = Long.parseLong(request.getParameter("tno"));
-        TodoDTO dto = TodoService.INSTANCE.get(tno);
-
-        request.setAttribute("dto", dto);
-        request.getRequestDispatcher("/WEB-INF/todo/read.jsp").forward(request,response);
+//        System.out.println("/todo/read doGet()");
+//
+//        // /todo/read?tno=123
+//        Long tno = Long.parseLong(request.getParameter("tno"));
+//        TodoDTO dto = TodoService.INSTANCE.get(tno);
+//
+//        request.setAttribute("dto", dto);
+//        request.getRequestDispatcher("/WEB-INF/todo/read.jsp").forward(request,response);
 
 
     }

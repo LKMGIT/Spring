@@ -28,14 +28,9 @@ ${list}
     <c:forEach var="dto" items="${list} ">
         <li>${dto}</li>
     </c:forEach>
-<ul>
-     <c:forEach var = "num" begin="1" end ="10">
-         <li>${num}</li>
-     </c:forEach>
-
 </ul>
 
-</ul>
+
 
 
 
