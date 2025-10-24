@@ -18,7 +18,9 @@
     <input type="date"   name="date"  value="${dto.dueDate}" /> <br>
     <button type="submit">Modify</button>
 </form>
-<form action="${pageContext.request.contextPath}/todo/remove" method="post">
+
+
+<form action="/todo/remove" method="post">
     <input type="hidden" name="tno" value="${dto.tno}" />
     <button type = "submit">Remove</button>
 </form>

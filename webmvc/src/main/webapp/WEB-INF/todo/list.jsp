@@ -27,7 +27,7 @@ ${list}
   <ul>
       <c:forEach var="dto" items="${list}">
           <li>
-              <a href="${pageContext.request.contextPath}/todo/read?tno=${dto.tno}">
+              <a href="/todo/read?tno=${dto.tno}">
                       ${dto.tno}
               </a>
                   ${dto.title} ${dto.dueDate} ${dto.finished}
