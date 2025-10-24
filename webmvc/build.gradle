@@ -29,6 +29,7 @@ dependencies {
   testImplementation 'org.springframework:spring-test:5.3.27'
   implementation 'com.zaxxer:HikariCP:5.0.1'
   implementation 'mysql:mysql-connector-java:8.0.22'
+  implementation 'org.modelmapper:modelmapper:3.0.0'
 
   compileOnly 'org.projectlombok:lombok:1.18.30'
   annotationProcessor 'org.projectlombok:lombok:1.18.30'
