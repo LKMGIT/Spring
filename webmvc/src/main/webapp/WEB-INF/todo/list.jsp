@@ -24,11 +24,17 @@ ${list}
 <h4>${list[0].title}</h4>
 <h4>${list[0].dueDate}</h4>--%>
 
-<ul>
-    <c:forEach var="dto" items="${list} ">
-        <li>${dto}</li>
-    </c:forEach>
-</ul>
+  <ul>
+      <c:forEach var="dto" items="${list}">
+          <li>
+              <a href="${pageContext.request.contextPath}/todo/read?tno=${dto.tno}">
+                      ${dto.tno}
+              </a>
+                  ${dto.title} ${dto.dueDate} ${dto.finished}
+          </li>
+      </c:forEach>
+  </ul>
+
 
 
 

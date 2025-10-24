@@ -7,45 +7,54 @@ import java.sql.SQLException;
 
 public class MemberDAO {
 
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL =
-            "jdbc:mysql://localhost:3306/sqld"
-                    + "?useUnicode=true&characterEncoding=UTF-8"
-                    + "&serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true";
-    private static final String USER = "root";
-    private static final String PASS = "mysql1234";
+    private Connection conn;
+    private PreparedStatement pstmt;
 
-    static {
-        try {
-            Class.forName(DRIVER);
-            System.out.println("드라이버 로딩 성공");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("MySQL 드라이버를 찾을 수 없습니다.", e);
+    private void ConnDB() {
+        final String DRIVER = "com.mysql.cj.jdbc.Driver";
+        final String URL =
+                "jdbc:mysql://localhost:3306/sqld"
+                        + "?useUnicode=true&characterEncoding=UTF-8"
+                        + "&serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true";
+        final String USER = "root";
+        final String PASS = "mysql1234";
+
+        {
+            try {
+                Class.forName(DRIVER);
+                System.out.println("드라이버 로딩 성공");
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException("MySQL 드라이버를 찾을 수 없습니다.", e);
+            }
         }
     }
 
-    public int saveMember(MemberVO memberVO) {
-        // 테이블명이 소문자라면 member 로 통일하세요.
-        final String sql =
-                "INSERT INTO member (user_id, user_pw, gender, hobbies) "
-                        + "VALUES (?, ?, ?, ?)";
+    public int addMember(MemberVO member) {
+        int result = 0;
+        try {
+            ConnDB();
 
-        try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+            String user_id = member.getUser_id();
+            String user_pwd = member.getUser_pwd();
+            String gender = member.getGender();
+            String hobby = String.join(",", member.getHobby());
 
-            ps.setString(1, memberVO.getUser_id());
-            ps.setString(2, memberVO.getUser_pw());
-            ps.setString(3, memberVO.getGender());
-            ps.setString(4, memberVO.getHobbies());
+            String sql = "INSERT INTO memberInfo (user_id, user_pwd, gender, hobby) VALUES (?, ?, ?, ?)";
+            pstmt = conn.prepareStatement(sql);
 
-            int rows = ps.executeUpdate();
-            System.out.println("INSERT rows = " + rows);
-            return rows;
+            pstmt.setString(1, user_id);
+            pstmt.setString(2, user_pwd);
+            pstmt.setString(3, gender);
+            pstmt.setString(4, hobby);
 
-        } catch (SQLException e) {
-            // 중복 PK/UK 등 상세 원인 로그
+            result = pstmt.executeUpdate();
+
+            pstmt.close();
+            conn.close();
+
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("회원 저장 중 DB 오류", e);
         }
+        return result;
     }
 }

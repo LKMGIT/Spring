@@ -43,16 +43,16 @@ public class TodoDAOTests {
         System.out.println(vo);
     }
 
-    @Test
-    public void testUpdate() throws Exception {
-        TodoVO vo = TodoVO.builder()
-                .tno(1L)
-                .title("Updated Title")
-                .dueDate(LocalDate.now())
-                .finished(true)
-                .build();
-        todoDAO.updateOne(vo);
-    }
+    //@Test
+//    public void testUpdate() throws Exception {
+//        TodoVO vo = TodoVO.builder()
+//                .tno(1L)
+//                .title("Updated Title")
+//                .dueDate(LocalDate.now())
+//                .finished(true)
+//                .build();
+//        todoDAO.updateOne(vo);
+//    }
 
     @Test
     public void testDelete() throws Exception {

@@ -1,6 +1,7 @@
 package com.ssg.webmvc.todo.dao;
 
 import com.ssg.webmvc.todo.domain.TodoVO;
+import com.ssg.webmvc.todo.dto.TodoDTO;
 import lombok.Cleanup;
 
 import java.sql.Connection;
@@ -100,16 +101,16 @@ public class TodoDAO {
     }
 
 
-    public  void updateOne(TodoVO todoVO)throws Exception{
+    public  void updateOne(TodoDTO todoDTO)throws Exception{
        String sql = "update todo set title = ? , dueDate = ? , finished = ? where tno = ?";
 
        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
        @Cleanup PreparedStatement pstmt = connection.prepareStatement(sql);
 
-       pstmt.setString(1, todoVO.getTitle());
-       pstmt.setDate(2, Date.valueOf(todoVO.getDueDate()));
-       pstmt.setBoolean(3, todoVO.isFinished());
-       pstmt.setLong(4, todoVO.getTno());
+       pstmt.setString(1, todoDTO.getTitle());
+       pstmt.setDate(2, Date.valueOf(todoDTO.getDueDate()));
+       pstmt.setBoolean(3, todoDTO.isFinished());
+       pstmt.setLong(4, todoDTO.getTno());
 
        pstmt.executeUpdate();
     }
