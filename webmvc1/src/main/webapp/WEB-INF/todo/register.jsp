@@ -16,7 +16,7 @@
         <input type="text" name="title" placeholder="INSERT TITLE">
     </div>
     <div>
-        <input type="date" name="date">
+        <input type="date" name="dueDate">
     </div>
     <div>
         <button type="reset">RESET</button>

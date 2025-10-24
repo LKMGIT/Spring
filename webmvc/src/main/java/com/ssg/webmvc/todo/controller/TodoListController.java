@@ -1,10 +1,10 @@
-package com.ssg.webmvc.todo;
+package com.ssg.webmvc.todo.controller;
+
 
 import com.ssg.webmvc.todo.dto.TodoDTO;
 import com.ssg.webmvc.todo.service.TodoService;
 import lombok.extern.log4j.Log4j2;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,19 +23,18 @@ public class TodoListController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //System.out.println("/todo/list doGet() 호출");
-        log.info("/todo/list doGet() 호출"); // 로그로 확인
+        log.info("/todo/list doGet() 호출");
+        log.info("/todo list............ ");
 
         try {
-            List<TodoDTO> todoDTOList = todoService.ListAll();
-
-            req.setAttribute("list",todoDTOList); // jsp 에 보내주기 위해 set
+            List<TodoDTO> dtoList = todoService.ListAll();
+            req.setAttribute("dtoList",dtoList);
 
             req.getRequestDispatcher("/WEB-INF/todo/list.jsp").forward(req,resp);
         } catch (Exception e) {
             log.error(e.getMessage());
-            throw new RuntimeException(e);
+            throw new ServletException("todo list error");
         }
-
     }
-
 }
+

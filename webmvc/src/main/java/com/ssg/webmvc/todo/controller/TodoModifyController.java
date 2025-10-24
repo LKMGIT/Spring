@@ -1,12 +1,9 @@
-package com.ssg.webmvc.todo;
+package com.ssg.webmvc.todo.controller;
 
-import com.ssg.webmvc.todo.domain.TodoVO;
 import com.ssg.webmvc.todo.dto.TodoDTO;
 import com.ssg.webmvc.todo.service.TodoService;
 import lombok.extern.log4j.Log4j2;
-import org.modelmapper.ModelMapper;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
