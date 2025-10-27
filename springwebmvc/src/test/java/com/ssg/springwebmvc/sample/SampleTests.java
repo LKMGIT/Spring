@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+
 @Log4j2
 @ExtendWith(SpringExtension.class)   //Junit 버전에서 spring-test 이용하기 위한 설정 어노테이션
 // 스프링의 설정 정보를 로딩하기 위한
@@ -31,6 +34,9 @@ public class SampleTests {
 
    @Autowired
    private ClassRoom classRoom;
+
+   @Autowired
+   private DataSource dataSource;
 
     @Test
     public void testSampleService() {
@@ -50,5 +56,15 @@ public class SampleTests {
         log.info(classRoom);
         Assertions.assertNotNull(classRoom);
 
+    }
+
+    // Bean 에다 등록만 해두면 원하는 곳에서 쉽게 달른 객체를 사용할 수 있다.
+    @Test
+    public void TestDataSource () throws Exception{
+
+        Connection connection = dataSource.getConnection();
+
+        log.info(connection);
+        Assertions.assertNotNull(connection);
     }
 }
