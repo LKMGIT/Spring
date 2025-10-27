@@ -62,6 +62,8 @@
 </head>
 <body>
 <h1>Todo List</h1>
+<h2>${loginInfo}</h2>
+<h2>${loginInfo.mname} 님 로그인 되었습니다.</h2>
 
 <%--<ul>--%>
 <%--    <c:forEach items="${dtoList}" var="dto">--%>
@@ -109,6 +111,10 @@
     </c:forEach>
     </tbody>
 </table>
+
+<form action="/logout" method="post">
+    <button type ="submit">로그아웃</button>
+</form>
 
 
 </body>
