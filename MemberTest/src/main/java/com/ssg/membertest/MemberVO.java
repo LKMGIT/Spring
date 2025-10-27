@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Repository
 public class MemberVO {
 
     private String mid;

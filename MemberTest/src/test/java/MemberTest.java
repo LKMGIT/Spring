@@ -19,15 +19,13 @@ public class MemberTest {
     @Autowired
     MemberServiceImpl memberService;
 
-    @Autowired
-    MemberVO memberVO;
-
     @Test
     public void testInsertMember() throws Exception {
-        memberVO.setMid("testMid2");
-        memberVO.setMpw("testMpw");
-        memberVO.setMname("testMname");
-        memberService.insertMember(memberVO);
+        MemberVO vo = new MemberVO();
+        vo.setMid("testMid3");
+        vo.setMpw("testMpw");
+        vo.setMname("testMname");
+        memberService.insertMember(vo);
     }
 
     @Test

@@ -19,19 +19,18 @@ public class MemberDAOImpl implements MemberDAO {
     @Autowired
     DataSource dataSource;
 
-    @Autowired
-    MemberVO memberVO;
 
     @Override
     public void insertMember(MemberVO member) throws Exception {
+
         String sql = "insert into tmember values(?,?,?)";
 
         Connection conn = dataSource.getConnection();
 
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, memberVO.getMid());
-        ps.setString(2, memberVO.getMpw());
-        ps.setString(3, memberVO.getMname());
+        ps.setString(1, member.getMid());
+        ps.setString(2, member.getMpw());
+        ps.setString(3, member.getMname());
 
         ps.executeUpdate();
 
