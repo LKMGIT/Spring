@@ -1,6 +1,7 @@
-package com.ssg.membertest;
+package com.ssg.membertest.service;
 
-import java.lang.reflect.Member;
+import com.ssg.membertest.vo.MemberVO;
+
 import java.util.List;
 
 public interface MemberSerivce {

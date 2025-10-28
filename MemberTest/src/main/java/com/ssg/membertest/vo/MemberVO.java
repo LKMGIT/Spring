@@ -1,11 +1,10 @@
-package com.ssg.membertest;
+package com.ssg.membertest.vo;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 @Data
 @AllArgsConstructor

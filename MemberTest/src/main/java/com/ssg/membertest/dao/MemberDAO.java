@@ -1,7 +1,7 @@
-package com.ssg.membertest;
+package com.ssg.membertest.dao;
 
-import java.lang.reflect.Member;
-import java.sql.SQLException;
+import com.ssg.membertest.vo.MemberVO;
+
 import java.util.List;
 
 public interface MemberDAO {

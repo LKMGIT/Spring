@@ -28,6 +28,8 @@ dependencies {
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
   implementation 'org.springframework:spring-core:5.3.27'
   implementation 'org.springframework:spring-context:5.3.27'
+  implementation 'org.springframework:spring-jdbc:5.3.27'
+  implementation 'org.springframework:spring-tx:5.3.27'
 
   implementation 'com.zaxxer:HikariCP:5.0.1'
   implementation 'mysql:mysql-connector-java:8.0.22'

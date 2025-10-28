@@ -1,13 +1,14 @@
-import com.ssg.membertest.MemberServiceImpl;
-import com.ssg.membertest.MemberVO;
+import com.ssg.membertest.service.MemberServiceImpl;
+import com.ssg.membertest.vo.MemberVO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
@@ -20,9 +21,11 @@ public class MemberTest {
     MemberServiceImpl memberService;
 
     @Test
+    @Transactional  // ?
+    @Rollback(false) // >
     public void testInsertMember() throws Exception {
         MemberVO vo = new MemberVO();
-        vo.setMid("testMid3");
+        vo.setMid("testMid4");
         vo.setMpw("testMpw");
         vo.setMname("testMname");
         memberService.insertMember(vo);
@@ -30,12 +33,7 @@ public class MemberTest {
 
     @Test
     public void testSelectMember() throws Exception {
-        List<MemberVO> list = memberService.selectMember();
-
-        for (MemberVO memberVO : list) {
-            log.info(memberVO.toString());
-            System.out.println(memberVO);
-        }
+        memberService.selectMember().forEach(System.out::println);
     }
 
 }
