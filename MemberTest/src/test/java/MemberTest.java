@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Log4j2
@@ -25,9 +26,10 @@ public class MemberTest {
     @Rollback(false) // >
     public void testInsertMember() throws Exception {
         MemberVO vo = new MemberVO();
-        vo.setMid("testMid4");
+        vo.setMid("testMid5");
         vo.setMpw("testMpw");
         vo.setMname("testMname");
+        vo.setMdate(LocalDate.now());
         memberService.insertMember(vo);
     }
 

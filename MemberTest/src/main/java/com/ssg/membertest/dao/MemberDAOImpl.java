@@ -23,6 +23,8 @@ public class MemberDAOImpl implements MemberDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
+
+    // 행 부분을 MAPPER 해주는 ROWMapper
     private final RowMapper<MemberVO> rowMapper = new RowMapper<MemberVO>() {
 
         @Override
@@ -31,6 +33,8 @@ public class MemberDAOImpl implements MemberDAO {
             memberVO.setMid(rs.getString("mid"));
             memberVO.setMpw(rs.getString("mpw"));
             memberVO.setMname(rs.getString("mname"));
+            java.sql.Date mdate = rs.getDate("mdate");
+            memberVO.setMdate(mdate != null ? mdate.toLocalDate() : null);
 
             return memberVO;
         }
@@ -39,12 +43,13 @@ public class MemberDAOImpl implements MemberDAO {
     @Override
     public void insertMember(MemberVO member) throws Exception {
 
-        String sql = "insert into tmember(mid, mpw, mname) values(?,?,?)";
+        String sql = "insert into tmember(mid, mpw, mname, mDate) values(?,?,?,?)";
 
         jdbcTemplate.update(sql,
                 member.getMid(),
                 member.getMpw(),
-                member.getMname());
+                member.getMname(),
+                member.getMdate());
 
     }
 
