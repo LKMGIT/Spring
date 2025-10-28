@@ -1,9 +1,7 @@
 package com.ssg.springwebmvc.member.repository;
 
-import com.mysql.cj.protocol.Resultset;
 import com.ssg.springwebmvc.member.dto.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +13,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 
-public class MemberDAOImpl implements MemberDAO {
+public class MemberDAO1Impl implements MemberDAO1 {
 
     private final JdbcTemplate jdbcTemplate;
 

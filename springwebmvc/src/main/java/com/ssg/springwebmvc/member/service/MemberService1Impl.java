@@ -2,9 +2,8 @@ package com.ssg.springwebmvc.member.service;
 
 
 import com.ssg.springwebmvc.member.dto.Member;
-import com.ssg.springwebmvc.member.repository.MemberDAO;
+import com.ssg.springwebmvc.member.repository.MemberDAO1;
 import lombok.RequiredArgsConstructor;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,22 +11,22 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class MemberServiceImpl implements MemberService {
+public class MemberService1Impl implements MemberService1 {
 
-    private final MemberDAO memberDAO;
+    private final MemberDAO1 memberDAO1;
 
 
 
     @Override
     @Transactional
     public void joinMember(Member member) {
-         memberDAO.insert(member);
+         memberDAO1.insert(member);
 
     }
 
     @Override
     @Transactional
     public List<Member> memberList() {
-        return memberDAO.findAll();
+        return memberDAO1.findAll();
     }
 }

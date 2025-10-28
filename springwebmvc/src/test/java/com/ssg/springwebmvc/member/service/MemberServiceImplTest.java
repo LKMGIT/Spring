@@ -1,18 +1,9 @@
 package com.ssg.springwebmvc.member.service;
 
-import com.ssg.springwebmvc.member.dto.Member;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations =
@@ -21,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MemberServiceImplTest {
 
     @Autowired
-    MemberService memberService;
+    MemberService1 memberService;
 
 
 //    @Test

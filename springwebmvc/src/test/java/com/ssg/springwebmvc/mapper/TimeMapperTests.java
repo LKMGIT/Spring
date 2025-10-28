@@ -1,6 +1,5 @@
 package com.ssg.springwebmvc.mapper;
 
-import com.ssg.springwebmvc.member.service.MemberService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
