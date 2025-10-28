@@ -48,7 +48,7 @@ public class SampleController {
     @GetMapping("/ex04_1")
     public void ex04_1(TodoDTO todoDTO, Model model){
         log.info(todoDTO);
-        
+
         model.addAttribute("todoDTO", todoDTO);
     }
 
