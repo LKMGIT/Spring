@@ -1,7 +1,9 @@
 package com.ssg.springwebmvc.controller;
 
+import com.ssg.springwebmvc.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,5 +38,19 @@ public class SampleController {
         log.info("ex03에서 수집한 파라미터");
         log.info("duDate: " + duDate);
     }
+
+    @GetMapping("/ex04")
+    public void ex04(Model model){
+        log.info("ex04 Model 파라미터");
+        model.addAttribute("message", "hello Spring Webmvc");
+    }
+
+    @GetMapping("/ex04_1")
+    public void ex04_1(TodoDTO todoDTO, Model model){
+        log.info(todoDTO);
+        
+        model.addAttribute("todoDTO", todoDTO);
+    }
+
 
 }

@@ -1,16 +1,17 @@
 package com.ssg.springwebmvc.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 
-@Repository
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class TodoDTO {
     private Long tno;
     private String title;
