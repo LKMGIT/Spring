@@ -57,14 +57,16 @@ public class SampleTests {
         Assertions.assertNotNull(classRoom);
 
     }
+// 스프링은 필요한 객체를 스프링이 주입해 주기 때문에 개별적으로 클래스를 작성해서 빈(Bean)으로 등록해 두기만 하면 원하는 곳에서 쉽게 다른 객체를 사용할 수 있다.
 
-    // Bean 에다 등록만 해두면 원하는 곳에서 쉽게 달른 객체를 사용할 수 있다.
     @Test
-    public void TestDataSource () throws Exception{
+    public void TestDataSource () throws Exception {
 
         Connection connection = dataSource.getConnection();
-
         log.info(connection);
         Assertions.assertNotNull(connection);
+
+        connection.close();
+
     }
 }
