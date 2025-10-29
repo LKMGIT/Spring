@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssg.todoservice.mapper.TodoMapper">
+
+    <!-- 삽입 -->
+    <insert id="insert">
+        insert into todo (title, dueDate, writer) values  ( #{title}, #{dueDate}, #{writer})
+    </insert>
+
+    <select id="getTime" resultType="string">
+        SELECT NOW()
+    </select>
+
+
+    <!-- 전체 조회 -->
+    <select id="selectAll" resultType="com.ssg.todoservice.domain.TodoVO">
+    select * from todo order by tno desc
+    </select>
+
+
+    <!-- 단일 조회 -->
+    <select id="selectOne" resultType="com.ssg.todoservice.domain.TodoVO">
+    select * from todo where tno  = #{tno}
+    </select>
+
+    <!-- 삭제 -->
+    <delete id="delete">
+        delete from todo where tno = #{tno}
+    </delete>
+
+    <!-- 수정 -->
+    <update id="update">
+        update todo set title = #{title} , dueDate = #{dueDate},
+        finished= #{finished} where tno = #{tno}
+    </update>
+
+
+</mapper>

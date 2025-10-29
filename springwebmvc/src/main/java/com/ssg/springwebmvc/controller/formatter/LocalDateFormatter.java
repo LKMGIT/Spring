@@ -7,9 +7,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-//특정 타입을 처리할 ㄸ때 직접 해당 타입으로 변환 해줘야 한다
+//특정한 타입을 처리할때 직접 해당 타입으로 변환해줘야 한다.
 public class LocalDateFormatter implements Formatter<LocalDate> {
-
     @Override
     public LocalDate parse(String text, Locale locale) throws ParseException {
         return LocalDate.parse(text, DateTimeFormatter.ofPattern("yyyy-MM-dd"));

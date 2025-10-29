@@ -9,11 +9,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Exo4_1</title>
+    <title>Ex04 view</title>
 </head>
 <body>
-
-<h1>${todoDTO}</h1>
-<h1><c:out value="${todoDTO}"></c:out></h1>
+    <h1>${todoDTO}</h1>
+    <h1><c:out value="${todoDTO}"></c:out></h1>
+<h1></h1>
 </body>
 </html>
