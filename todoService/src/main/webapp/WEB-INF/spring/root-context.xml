@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       https://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx.xsd
-       http://mybatis.org/schema/mybatis-spring
-       http://mybatis.org/schema/mybatis-spring.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+    <context:component-scan base-package="com.ssg.todoservice.config"/>
+    <context:component-scan base-package="com.ssg.todoservice.service"/>
 
-    <!--       <bean class="com.ssg.springwebmvc.sample.SampleDAO"></bean>-->
-    <!--       <bean class="com.ssg.springwebmvc.sample.SampleService"></bean>-->
-    <!--       <bean class="com.ssg.springwebmvc.sample.Chef"></bean>-->
-    <!--       <bean class="com.ssg.springwebmvc.sample.Restaurant"></bean>-->
-    <context:component-scan base-package="com.ssg.todoservice"/>
+    <mybatis:scan base-package="com.ssg.todoservice.mapper"></mybatis:scan>
 
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
 
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
@@ -40,33 +28,15 @@
 
     </bean>
 
-    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
-        <constructor-arg ref="hikariConfig"/>
-    </bean>
-
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+          destroy-method="close">
+        <constructor-arg ref="hikariConfig" />
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations" value="classpath:/mappers/**/*.xml"></property>
+
     </bean>
 
-    <context:component-scan base-package="com.ssg.todoservice.config"/>
-
-
-    <!-- @Transactional 활성화 -->
-    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
-    <!--    매퍼인터페이스 등록-->
-    <mybatis:scan base-package="com.ssg.todoservice.mapper"></mybatis:scan>
-
-    <context:component-scan base-package="com.ssg.todoservice.config"/>
-    <context:component-scan base-package="com.ssg.todoservice.service"/>
-
-
-
-
 </beans>
-
